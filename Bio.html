@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Douglas Esteban — Biografía</title>
+<style>
+  :root{
+    --ink:#141A22;
+    --navy:#1C2733;
+    --paper:#EDE6D6;
+    --paper-dim:#DCD3BD;
+    --brass:#A9834B;
+    --brass-light:#C9A467;
+    --line:#3A4756;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Iowan Old Style','Georgia',serif;
+    line-height:1.6;
+  }
+
+  /* ---------- HEADER / DOSSIER COVER ---------- */
+  header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:6vw 8vw;
+    position:relative;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(169,131,75,0.12), transparent 45%),
+      var(--navy);
+    border-bottom:2px solid var(--brass);
+  }
+
+  .file-tag{
+    font-family:'Courier New', monospace;
+    letter-spacing:0.35em;
+    font-size:0.75rem;
+    color:var(--brass-light);
+    text-transform:uppercase;
+    margin-bottom:2rem;
+  }
+
+  .file-tag::before{content:"EXPEDIENTE Nº 001 — ";}
+
+  h1{
+    font-size:clamp(3rem, 9vw, 7rem);
+    font-weight:400;
+    letter-spacing:-0.01em;
+    line-height:0.95;
+    max-width:14ch;
+  }
+
+  .role{
+    margin-top:1.5rem;
+    font-family:'Courier New', monospace;
+    font-size:1rem;
+    letter-spacing:0.08em;
+    color:var(--brass-light);
+    border-left:2px solid var(--brass);
+    padding-left:1rem;
+    max-width:40ch;
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:3rem;
+    left:8vw;
+    font-family:'Courier New', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--brass);
+    opacity:0.7;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding:6rem 8vw;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .eyebrow{
+    font-family:'Courier New', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.25em;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-bottom:1rem;
+  }
+
+  h2{
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+    font-weight:400;
+    margin-bottom:2rem;
+    color:var(--paper);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:4rem;
+    align-items:start;
+  }
+
+  .about-text p{
+    font-size:1.05rem;
+    color:#D8D0BE;
+    margin-bottom:1.2rem;
+    max-width:56ch;
+  }
+
+  .about-card{
+    background:var(--navy);
+    border:1px solid var(--line);
+    padding:2rem;
+  }
+
+  .about-card dl{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0.6rem 1.2rem;
+    font-size:0.95rem;
+  }
+
+  .about-card dt{
+    font-family:'Courier New', monospace;
+    color:var(--brass-light);
+    letter-spacing:0.05em;
+  }
+
+  .about-card dd{color:#D8D0BE;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    border-left:2px solid var(--line);
+    margin-left:1rem;
+  }
+
+  .entry{
+    position:relative;
+    padding:0 0 3rem 2.5rem;
+  }
+
+  .entry::before{
+    content:"";
+    position:absolute;
+    left:-7px;
+    top:0.3rem;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--brass);
+  }
+
+  .entry .year{
+    font-family:'Courier New', monospace;
+    color:var(--brass-light);
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    margin-bottom:0.3rem;
+  }
+
+  .entry h3{
+    font-size:1.3rem;
+    font-weight:400;
+    margin-bottom:0.5rem;
+    color:var(--paper);
+  }
+
+  .entry p{
+    color:#C7BFAD;
+    max-width:60ch;
+    font-size:0.98rem;
+  }
+
+  /* ---------- QUOTE ---------- */
+  .quote-block{
+    background:var(--paper);
+    color:var(--ink);
+    padding:5rem 8vw;
+  }
+
+  .quote-block blockquote{
+    font-size:clamp(1.4rem, 3vw, 2.1rem);
+    max-width:22ch;
+    font-style:italic;
+    line-height:1.4;
+  }
+
+  .quote-block cite{
+    display:block;
+    margin-top:1.5rem;
+    font-family:'Courier New', monospace;
+    font-style:normal;
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    color:var(--brass);
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:1.5rem;
+  }
+
+  .skill-card{
+    border:1px solid var(--line);
+    padding:1.5rem;
+    background:var(--navy);
+  }
+
+  .skill-card .num{
+    font-family:'Courier New', monospace;
+    color:var(--brass);
+    font-size:0.8rem;
+    margin-bottom:0.5rem;
+  }
+
+  .skill-card h4{
+    font-weight:400;
+    font-size:1.1rem;
+    margin-bottom:0.4rem;
+  }
+
+  .skill-card p{
+    font-size:0.9rem;
+    color:#B9B19F;
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    padding:4rem 8vw 3rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:1.5rem;
+  }
+
+  footer .stamp{
+    font-family:'Courier New', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    color:var(--brass);
+    text-transform:uppercase;
+  }
+
+  footer a{
+    color:var(--paper);
+    text-decoration:none;
+    border-bottom:1px solid var(--brass);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:720px){
+    .about-grid{grid-template-columns:1fr;}
+    header{padding:8vh 6vw;}
+    section{padding:4rem 6vw;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="file-tag">Biografía personal</div>
+  <h1>Douglas Esteban</h1>
+  <p class="role">Este espacio resume su trayectoria, formación y logros más relevantes.</p>
+  <div class="scroll-hint">↓ desplázate para leer el expediente</div>
+</header>
+
+<section id="about">
+  <div class="eyebrow">Sobre él</div>
+  <h2>Quién es</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Douglas Esteban es [describe aquí su profesión, pasión o campo de trabajo].
+        Con una trayectoria marcada por [menciona un rasgo distintivo: constancia,
+        creatividad, liderazgo, etc.], se ha destacado por su capacidad para
+        [describe una fortaleza concreta].
+      </p>
+      <p>
+        A lo largo de su carrera ha combinado [habilidad 1] con [habilidad 2],
+        lo que le ha permitido [logro o impacto general]. Actualmente se dedica a
+        [actividad actual], siempre con la meta de [visión u objetivo personal].
+      </p>
+    </div>
+    <div class="about-card">
+      <dl>
+        <dt>Nacimiento</dt><dd>[Fecha / lugar]</dd>
+        <dt>Ocupación</dt><dd>[Profesión]</dd>
+        <dt>Formación</dt><dd>[Estudios]</dd>
+        <dt>Ubicación</dt><dd>[Ciudad, país]</dd>
+        <dt>Intereses</dt><dd>[Hobbies o áreas de interés]</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="eyebrow">Trayectoria</div>
+  <h2>Momentos clave</h2>
+  <div class="timeline">
+    <div class="entry">
+      <div class="year">[Año]</div>
+      <h3>[Evento o inicio]</h3>
+      <p>Describe brevemente este momento: dónde ocurrió, qué representó y por qué fue importante en su historia.</p>
+    </div>
+    <div class="entry">
+      <div class="year">[Año]</div>
+      <h3>[Logro o cambio]</h3>
+      <p>Explica el contexto de este hito: un proyecto, un puesto nuevo, un reconocimiento o un aprendizaje significativo.</p>
+    </div>
+    <div class="entry">
+      <div class="year">[Año]</div>
+      <h3>[Etapa actual]</h3>
+      <p>Cuenta en qué se encuentra trabajando o enfocado en la actualidad, y hacia dónde se dirige.</p>
+    </div>
+  </div>
+</section>
+
+<div class="quote-block">
+  <blockquote>
+    "Escribe aquí una frase que lo represente o una cita suya."
+    <cite>— Douglas Esteban</cite>
+  </blockquote>
+</div>
+
+<section id="skills">
+  <div class="eyebrow">Fortalezas</div>
+  <h2>Habilidades y valores</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="num">01</div>
+      <h4>[Habilidad 1]</h4>
+      <p>Breve descripción de esta cualidad y cómo se refleja en su trabajo o vida diaria.</p>
+    </div>
+    <div class="skill-card">
+      <div class="num">02</div>
+      <h4>[Habilidad 2]</h4>
+      <p>Breve descripción de esta cualidad y cómo se refleja en su trabajo o vida diaria.</p>
+    </div>
+    <div class="skill-card">
+      <div class="num">03</div>
+      <h4>[Habilidad 3]</h4>
+      <p>Breve descripción de esta cualidad y cómo se refleja en su trabajo o vida diaria.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="stamp">Fin del expediente</div>
+  <div><a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a></div>
+</footer>
+
+</body>
+</html>
